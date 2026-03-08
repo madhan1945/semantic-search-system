@@ -1,0 +1,11 @@
+.venv/
+.model_cache/
+__pycache__/
+*.pyc
+*.pkl
+*.index
+data/vector_store/
+data/clustering/
+data/cache/
+data/experiments/
+start-search.bat
