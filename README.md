@@ -1,6 +1,14 @@
 # Semantic Search System
 
-A production-ready AI-powered semantic search system built on the 20 Newsgroups dataset (~20,000 documents, 20 categories). Uses sentence-transformer embeddings, FAISS vector database, Gaussian Mixture Model fuzzy clustering, and a custom-built semantic cache that recognises paraphrased queries and delivers 10x faster responses on cache hits. Exposed via a FastAPI REST API with full Swagger documentation, 35+ unit tests, and Docker support.
+> AI-powered semantic search over 20,000 real-world documents across 20 categories.
+
+- 🔍 **Semantic Search** — searches by meaning, not just keywords
+- 🧠 **HuggingFace Embeddings** — sentence-transformer all-MiniLM-L6-v2
+- ⚡ **FAISS Vector Database** — millisecond search across 20,000 documents
+- 🎯 **Fuzzy Clustering** — Gaussian Mixture Model with automatic BIC selection
+- 💾 **Custom Semantic Cache** — recognises paraphrased queries, 10x faster on hits
+- 🚀 **FastAPI REST API** — full Swagger docs, 35+ tests, Docker support
+
 ---
 
 ## Table of Contents
