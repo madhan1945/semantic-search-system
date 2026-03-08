@@ -1,7 +1,6 @@
 # Semantic Search System
 
-A production-ready semantic search system built on the [20 Newsgroups](https://archive.ics.uci.edu/dataset/113/twenty+newsgroups) dataset (~20,000 documents, 20 categories).
-
+A production-ready AI-powered semantic search system built on the 20 Newsgroups dataset (~20,000 documents, 20 categories). Uses sentence-transformer embeddings, FAISS vector database, Gaussian Mixture Model fuzzy clustering, and a custom-built semantic cache that recognises paraphrased queries and delivers 10x faster responses on cache hits. Exposed via a FastAPI REST API with full Swagger documentation, 35+ unit tests, and Docker support.
 ---
 
 ## Table of Contents
