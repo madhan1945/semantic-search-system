@@ -1,0 +1,47 @@
+# ============================================================
+# Semantic Search System — Docker Compose
+#
+# Usage:
+#   docker-compose up --build          # first run
+#   docker-compose up                  # subsequent runs
+#   docker-compose down                # stop and remove containers
+#
+# The 'data' volume persists FAISS index, clusterer, and cache
+# between container restarts so the full pipeline only runs once.
+# ============================================================
+
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: semantic-search:latest
+    container_name: semantic-search-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Set MAX_DOCS to a small number for fast dev startup.
+      # Remove or set to empty string to use the full 20 k corpus.
+      - MAX_DOCS=1000
+      - SIMILARITY_THRESHOLD=0.85
+      - REBUILD_INDEX=false
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Persist generated artifacts (FAISS index, GMM, cache) across restarts
+      - semantic_data:/app/data/vector_store
+      - semantic_data:/app/data/clustering
+      - semantic_data:/app/data/cache
+      - semantic_data:/app/data/experiments
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 180s
+    restart: unless-stopped
+
+volumes:
+  semantic_data:
+    driver: local
